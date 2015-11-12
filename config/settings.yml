@@ -1,0 +1,36 @@
+VALID_EMAIL_REGEX: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+CHECKBOX_TRUE: "1"
+email_maximum: 255
+name_maximum: 50
+password_minimum: 6
+image_type:
+  - jpg
+  - jpeg
+  - gif
+  - png
+size_picture: 400
+image_type_accept: image/jpeg,image/gif,image/png
+image_size_accept: 5
+avata_default: avatar.jpg
+size_picture_display: 100x100
+size_picture_display_small: 50x50
+size_picture_display_icon: 30x30
+users_per_index: 10
+categoies_per_page: 3
+following_type: "following"
+follow_type:
+  - following
+  - followers
+words_per_page: 20
+filters:
+  - get_all
+  - learned
+  - not_learned
+sql_query:
+  get_all: ""
+  get_learned: "id IN (SELECT word_id FROM lesson_words WHERE lesson_id IN (SELECT id FROM lessons WHERE user_id = ?))"
+  get_not_learned: "id NOT IN (SELECT word_id FROM lesson_words WHERE lesson_id IN (SELECT id FROM lessons WHERE user_id = ?))"
+  lessons_learned: "user_id = ?"
+  following_leaned: "id IN (SELECT followed_id FROM relationships WHERE  follower_id = ?) OR user_id = ?"
+  answered: "NOT answer_id = ?"
+lessons_per_page: 4

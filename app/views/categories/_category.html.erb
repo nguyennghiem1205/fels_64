@@ -1,0 +1,8 @@
+<div>
+  <h3><%= category.title %></h3>
+  <i><%= category.words.count %> - <%= t :words %></i>
+  <p><%= category.description %></p>
+  <%= link_to t("start"), lessons_path(category_id: category.id),
+    method: :POST, class: "btn btn-sm pull-right btn-primary" %><br />
+</div>
+<hr />
